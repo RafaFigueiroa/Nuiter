@@ -10,7 +10,7 @@ function AppPages(){
             <Routes>
                 <Route path='/' element={<Home />}/>
                 <Route path='*' element={<NotFound />}/>
-                <Route path='/login' element={<Login />}/>
+                <Route path='/signup' element={<SignUp />}/>
             </Routes>
         </Router>
     );

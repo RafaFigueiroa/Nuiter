@@ -2,7 +2,7 @@ import React from "react";
 
 function Public({children}){
     return(
-        <div>{children}</div>
+        <div className="flex justify-center items-center w-screen h-screen">{children}</div>
     );
 }
 
