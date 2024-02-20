@@ -5,16 +5,16 @@ import Title from "../components/Title";
 import UserForm from "../components/UserForm";
 import { Link } from "react-router-dom";
 
-function SignUp(){
+function SignIn(){
     return(
         <Public>
             <div className="grid justify-items-center gap-5">
                 <Title />
-                <UserForm buttonValue="Criar uma nova conta"/>               
-                <p>Já possui uma conta? <Link to="/signin" className="text-blue-500 hover:underline">Acesse agora!</Link></p>
+                <UserForm buttonValue="Acessar Plataforma" />
+                <p>Não possui uma conta? <Link to="/signup" className="text-blue-500 hover:underline">Crie uma agora!</Link></p>
             </div>
         </Public>
     );
 }
 
-export default SignUp;
+export default SignIn;
