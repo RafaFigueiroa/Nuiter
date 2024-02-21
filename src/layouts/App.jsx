@@ -6,7 +6,9 @@ function App({children}) {
   return (
     <div className='w-screen h-screen bg-gray-100'>
       <Navbar />
-      {children}
+      <div className='container mx-36 my-10'>
+        {children}
+      </div>
     </div>
   )
 }
