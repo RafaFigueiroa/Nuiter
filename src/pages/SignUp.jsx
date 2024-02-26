@@ -2,7 +2,7 @@ import React from "react";
 
 import Public from "../layouts/Public";
 import Title from "../components/Title";
-import UserForm from "../components/UserForm";
+import RegisterForm from "../components/RegisterForm";
 import { Link } from "react-router-dom";
 
 function SignUp(){
@@ -10,7 +10,7 @@ function SignUp(){
         <Public>
             <div className="grid justify-items-center gap-5">
                 <Title />
-                <UserForm buttonValue="Criar uma nova conta"/>               
+                <RegisterForm />               
                 <p>Já possui uma conta? <Link to="/signin" className="text-blue-500 hover:underline">Acesse agora!</Link></p>
             </div>
         </Public>

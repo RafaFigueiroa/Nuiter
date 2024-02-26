@@ -1,33 +1,40 @@
 import { useForm } from 'react-hook-form'
 import classNames from "classnames";
 import { auth } from "../services/firebaseConfig";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-function UserForm(props){
+function LoginForm(){
     //authentication firebase hook
-    const [ 
-        createUserWithEmailAndPassword, 
-        user, loading, error, 
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [
+        signInWithEmailAndPassword,
+        data, loading, error,
+    ] = useSignInWithEmailAndPassword(auth);
 
     //form hook
-    const { register, handleSubmit, 
+    const { 
+        register, handleSubmit, 
         formState: {errors}
     } = useForm();
 
     //creating user
     const onSubmit = async (data) => {
         try{
-            await createUserWithEmailAndPassword(data.email, data.password);
-            console.log("Usuário registrado com sucesso!")
+            await signInWithEmailAndPassword(data.email, data.password)
         }
         catch(error){
-            console.error("Erro ao registrar usuário: ", error.message);
+            console.error("Erro ao autenticar usuário: ", error.message);
         }
     };
 
+    //auth returns
+    if(error){
+        return <p>{error.message}</p>
+    }
     if(loading){
         return <p>Carregando...</p>
+    }
+    if(data){
+        return <p>Usuário conectado: {data.user.email}</p>
     }
 
     //conditional styling
@@ -60,11 +67,11 @@ function UserForm(props){
 
             <input 
                 type="submit" 
-                value={props.buttonValue}
+                value="Acessar Plataforma"
                 className="text-slate-100 bg-emerald-500 hover:bg-emerald-600 duration-200 mt-4" 
             />
         </form>
     );
 }
 
-export default UserForm
+export default LoginForm;
